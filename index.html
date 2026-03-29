@@ -5,15 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Cargo</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #333; }
-        p { font-size: 18px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .input-section {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 10px;
+            width: 300px;
+            max-width: 100%;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 18px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h1>Witaj w grze Pixel Cargo!</h1>
-    <p>To jest pierwsza wersja gry. Tutaj dodasz logikę i grafikę.</p>
+    <p>Najpierw wpisz nazwę swojej firmy, a potem wybierz miejsce, gdzie zbudujesz siedzibę.</p>
+
+    <div class="input-section">
+        <label for="company-name">Nazwa firmy:</label>
+        <input type="text" id="company-name" placeholder="Wpisz nazwę firmy">
+    </div>
+
+    <div class="input-section">
+        <label for="city-select">Wybierz miasto startowe:</label>
+        <select id="city-select">
+            <option value="">-- Wybierz miasto --</option>
+            <option value="Białystok">Białystok</option>
+            <option value="Bielsko-Biała">Bielsko-Biała</option>
+            <option value="Bydgoszcz">Bydgoszcz</option>
+            <option value="Bytom">Bytom</option>
+            <option value="Chorzów">Chorzów</option>
+            <option value="Częstochowa">Częstochowa</option>
+            <option value="Dąbrowa Górnicza">Dąbrowa Górnicza</option>
+            <option value="Elbląg">Elbląg</option>
+            <option value="Gdańsk">Gdańsk</option>
+            <option value="Gdynia">Gdynia</option>
+            <option value="Gliwice">Gliwice</option>
+            <option value="Gorzów Wielkopolski">Gorzów Wielkopolski</option>
+            <option value="Kalisz">Kalisz</option>
+            <option value="Katowice">Katowice</option>
+            <option value="Kielce">Kielce</option>
+            <option value="Koszalin">Koszalin</option>
+            <option value="Kraków">Kraków</option>
+            <option value="Legnica">Legnica</option>
+            <option value="Lublin">Lublin</option>
+            <option value="Łódź">Łódź</option>
+            <option value="Nowy Sącz">Nowy Sącz</option>
+            <option value="Olsztyn">Olsztyn</option>
+            <option value="Opole">Opole</option>
+            <option value="Płock">Płock</option>
+            <option value="Poznań">Poznań</option>
+            <option value="Radom">Radom</option>
+            <option value="Ruda Śląska">Ruda Śląska</option>
+            <option value="Rybnik">Rybnik</option>
+            <option value="Rzeszów">Rzeszów</option>
+            <option value="Sosnowiec">Sosnowiec</option>
+            <option value="Szczecin">Szczecin</option>
+            <option value="Tarnów">Tarnów</option>
+            <option value="Toruń">Toruń</option>
+            <option value="Tychy">Tychy</option>
+            <option value="Wałbrzych">Wałbrzych</option>
+            <option value="Warszawa">Warszawa</option>
+            <option value="Włocławek">Włocławek</option>
+            <option value="Wrocław">Wrocław</option>
+            <option value="Zabrze">Zabrze</option>
+            <option value="Zielona Góra">Zielona Góra</option>
+            <option value="Biała Podlaska">Biała Podlaska</option>
+            <option value="Ełk">Ełk</option>
+            <option value="Grudziądz">Grudziądz</option>
+            <option value="Jastrzębie-Zdrój">Jastrzębie-Zdrój</option>
+            <option value="Jaworzno">Jaworzno</option>
+            <option value="Konin">Konin</option>
+            <option value="Piotrków Trybunalski">Piotrków Trybunalski</option>
+            <option value="Przemyśl">Przemyśl</option>
+            <option value="Siedlce">Siedlce</option>
+            <option value="Suwałki">Suwałki</option>
+        </select>
+    </div>
+
+    <button onclick="startGame()">Start</button>
+
     <script>
+        function startGame() {
+            const companyName = document.getElementById("company-name").value;
+            const city = document.getElementById("city-select").value;
+
+            if (!companyName || !city) {
+                alert("Wpisz nazwę firmy i wybierz miasto startowe.");
+                return;
+            }
+
+            alert("Firma: " + companyName + "\\nMiasto startowe: " + city);
+        }
+
         console.log("Gra Pixel Cargo startuje!");
     </script>
 </body>
