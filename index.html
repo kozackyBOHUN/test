@@ -7,17 +7,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 0;
             background: #f4f4f4;
             color: #222;
         }
 
-        h1 {
-            color: #333;
+        .start-screen, .game-screen {
+            padding: 30px;
         }
 
-        p {
-            font-size: 18px;
+        h1 {
+            color: #333;
         }
 
         .input-section {
@@ -32,7 +32,7 @@
 
         input, select {
             padding: 10px;
-            width: 300px;
+            width: 320px;
             max-width: 100%;
             font-size: 16px;
         }
@@ -43,79 +43,171 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #222;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .top-bar-left,
+        .top-bar-center,
+        .top-bar-right {
+            flex: 1;
+        }
+
+        .top-bar-center {
+            text-align: center;
+        }
+
+        .top-bar-right {
+            text-align: right;
+        }
+
+        .game-content {
+            padding: 30px;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Witaj w grze Pixel Cargo!</h1>
-    <p>Najpierw wpisz nazwę swojej firmy, a potem wybierz miejsce, gdzie zbudujesz siedzibę.</p>
+    <div id="start-screen" class="start-screen">
+        <h1>Witaj w grze Pixel Cargo!</h1>
+        <p>Najpierw wpisz nazwę swojej firmy, a potem wybierz miejsce, gdzie zbudujesz siedzibę.</p>
 
-    <div class="input-section">
-        <label for="company-name">Nazwa firmy:</label>
-        <input type="text" id="company-name" placeholder="Wpisz nazwę firmy">
+        <div class="input-section">
+            <label for="company-name">Nazwa firmy:</label>
+            <input type="text" id="company-name" placeholder="Wpisz nazwę firmy">
+        </div>
+
+        <div class="input-section">
+            <label for="city-select">Wybierz miasto startowe:</label>
+            <select id="city-select">
+                <option value="">-- Wybierz miasto --</option>
+                <option value="Białystok">Białystok</option>
+                <option value="Bielsko-Biała">Bielsko-Biała</option>
+                <option value="Bydgoszcz">Bydgoszcz</option>
+                <option value="Bytom">Bytom</option>
+                <option value="Chorzów">Chorzów</option>
+                <option value="Częstochowa">Częstochowa</option>
+                <option value="Dąbrowa Górnicza">Dąbrowa Górnicza</option>
+                <option value="Elbląg">Elbląg</option>
+                <option value="Ełk">Ełk</option>
+                <option value="Gdańsk">Gdańsk</option>
+                <option value="Gdynia">Gdynia</option>
+                <option value="Gliwice">Gliwice</option>
+                <option value="Gorzów Wielkopolski">Gorzów Wielkopolski</option>
+                <option value="Grudziądz">Grudziądz</option>
+                <option value="Jastrzębie-Zdrój">Jastrzębie-Zdrój</option>
+                <option value="Jaworzno">Jaworzno</option>
+                <option value="Kalisz">Kalisz</option>
+                <option value="Katowice">Katowice</option>
+                <option value="Kielce">Kielce</option>
+                <option value="Konin">Konin</option>
+                <option value="Koszalin">Koszalin</option>
+                <option value="Kraków">Kraków</option>
+                <option value="Legnica">Legnica</option>
+                <option value="Lublin">Lublin</option>
+                <option value="Łódź">Łódź</option>
+                <option value="Nowy Sącz">Nowy Sącz</option>
+                <option value="Olsztyn">Olsztyn</option>
+                <option value="Opole">Opole</option>
+                <option value="Piotrków Trybunalski">Piotrków Trybunalski</option>
+                <option value="Płock">Płock</option>
+                <option value="Poznań">Poznań</option>
+                <option value="Przemyśl">Przemyśl</option>
+                <option value="Radom">Radom</option>
+                <option value="Ruda Śląska">Ruda Śląska</option>
+                <option value="Rybnik">Rybnik</option>
+                <option value="Rzeszów">Rzeszów</option>
+                <option value="Siedlce">Siedlce</option>
+                <option value="Sosnowiec">Sosnowiec</option>
+                <option value="Suwałki">Suwałki</option>
+                <option value="Szczecin">Szczecin</option>
+                <option value="Tarnów">Tarnów</option>
+                <option value="Toruń">Toruń</option>
+                <option value="Tychy">Tychy</option>
+                <option value="Wałbrzych">Wałbrzych</option>
+                <option value="Warszawa">Warszawa</option>
+                <option value="Włocławek">Włocławek</option>
+                <option value="Wrocław">Wrocław</option>
+                <option value="Zabrze">Zabrze</option>
+                <option value="Zielona Góra">Zielona Góra</option>
+            </select>
+        </div>
+
+        <button onclick="startGame()">Start</button>
     </div>
 
-    <div class="input-section">
-        <label for="city-select">Wybierz miasto startowe:</label>
-        <select id="city-select">
-            <option value="">-- Wybierz miasto --</option>
-            <option value="Białystok">Białystok</option>
-            <option value="Bielsko-Biała">Bielsko-Biała</option>
-            <option value="Bydgoszcz">Bydgoszcz</option>
-            <option value="Bytom">Bytom</option>
-            <option value="Chorzów">Chorzów</option>
-            <option value="Częstochowa">Częstochowa</option>
-            <option value="Dąbrowa Górnicza">Dąbrowa Górnicza</option>
-            <option value="Elbląg">Elbląg</option>
-            <option value="Gdańsk">Gdańsk</option>
-            <option value="Gdynia">Gdynia</option>
-            <option value="Gliwice">Gliwice</option>
-            <option value="Gorzów Wielkopolski">Gorzów Wielkopolski</option>
-            <option value="Kalisz">Kalisz</option>
-            <option value="Katowice">Katowice</option>
-            <option value="Kielce">Kielce</option>
-            <option value="Koszalin">Koszalin</option>
-            <option value="Kraków">Kraków</option>
-            <option value="Legnica">Legnica</option>
-            <option value="Lublin">Lublin</option>
-            <option value="Łódź">Łódź</option>
-            <option value="Nowy Sącz">Nowy Sącz</option>
-            <option value="Olsztyn">Olsztyn</option>
-            <option value="Opole">Opole</option>
-            <option value="Płock">Płock</option>
-            <option value="Poznań">Poznań</option>
-            <option value="Radom">Radom</option>
-            <option value="Ruda Śląska">Ruda Śląska</option>
-            <option value="Rybnik">Rybnik</option>
-            <option value="Rzeszów">Rzeszów</option>
-            <option value="Sosnowiec">Sosnowiec</option>
-            <option value="Szczecin">Szczecin</option>
-            <option value="Tarnów">Tarnów</option>
-            <option value="Toruń">Toruń</option>
-            <option value="Tychy">Tychy</option>
-            <option value="Wałbrzych">Wałbrzych</option>
-            <option value="Warszawa">Warszawa</option>
-            <option value="Włocławek">Włocławek</option>
-            <option value="Wrocław">Wrocław</option>
-            <option value="Zabrze">Zabrze</option>
-            <option value="Zielona Góra">Zielona Góra</option>
-            <option value="Biała Podlaska">Biała Podlaska</option>
-            <option value="Ełk">Ełk</option>
-            <option value="Grudziądz">Grudziądz</option>
-            <option value="Jastrzębie-Zdrój">Jastrzębie-Zdrój</option>
-            <option value="Jaworzno">Jaworzno</option>
-            <option value="Konin">Konin</option>
-            <option value="Piotrków Trybunalski">Piotrków Trybunalski</option>
-            <option value="Przemyśl">Przemyśl</option>
-            <option value="Siedlce">Siedlce</option>
-            <option value="Suwałki">Suwałki</option>
-        </select>
-    </div>
+    <div id="game-screen" class="game-screen hidden">
+        <div class="top-bar">
+            <div class="top-bar-left" id="player-city">Miasto</div>
+            <div class="top-bar-center" id="player-company">Firma</div>
+            <div class="top-bar-right">
+                <span id="game-day">Poniedziałek</span>
+                <span id="game-time">08:00</span>
+                |
+                <span id="player-money">10 000 PLN</span>
+            </div>
+        </div>
 
-    <button onclick="startGame()">Start</button>
+        <div class="game-content">
+            <h2>Główny widok gry</h2>
+            <p>Tutaj zrobimy kolejne elementy gry.</p>
+        </div>
+    </div>
 
     <script>
+        let player = {
+            companyName: "",
+            city: "",
+            money: 10000
+        };
+
+        let gameTime = {
+            dayIndex: 0,
+            hour: 8,
+            minute: 0
+        };
+
+        const days = [
+            "Poniedziałek",
+            "Wtorek",
+            "Środa",
+            "Czwartek",
+            "Piątek",
+            "Sobota",
+            "Niedziela"
+        ];
+
+        function formatMoney(amount) {
+            return amount.toLocaleString("pl-PL") + " PLN";
+        }
+
+        function formatTime(hour, minute) {
+            const h = String(hour).padStart(2, "0");
+            const m = String(minute).padStart(2, "0");
+            return `${h}:${m}`;
+        }
+
+        function updateTopBar() {
+            document.getElementById("player-city").textContent = player.city;
+            document.getElementById("player-company").textContent = player.companyName;
+            document.getElementById("player-money").textContent = formatMoney(player.money);
+            document.getElementById("game-day").textContent = days[gameTime.dayIndex];
+            document.getElementById("game-time").textContent = formatTime(gameTime.hour, gameTime.minute);
+        }
+
         function startGame() {
-            const companyName = document.getElementById("company-name").value;
+            const companyName = document.getElementById("company-name").value.trim();
             const city = document.getElementById("city-select").value;
 
             if (!companyName || !city) {
@@ -123,10 +215,37 @@
                 return;
             }
 
-            alert("Firma: " + companyName + "\\nMiasto startowe: " + city);
+            player.companyName = companyName;
+            player.city = city;
+            player.money = 10000;
+
+            updateTopBar();
+
+            document.getElementById("start-screen").classList.add("hidden");
+            document.getElementById("game-screen").classList.remove("hidden");
         }
 
-        console.log("Gra Pixel Cargo startuje!");
+        function advanceGameTime() {
+            gameTime.minute += 10;
+
+            if (gameTime.minute >= 60) {
+                gameTime.minute = 0;
+                gameTime.hour += 1;
+            }
+
+            if (gameTime.hour >= 24) {
+                gameTime.hour = 0;
+                gameTime.dayIndex += 1;
+            }
+
+            if (gameTime.dayIndex >= days.length) {
+                gameTime.dayIndex = 0;
+            }
+
+            updateTopBar();
+        }
+
+        setInterval(advanceGameTime, 6000);
     </script>
 </body>
 </html>
